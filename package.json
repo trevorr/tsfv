@@ -1,0 +1,50 @@
+{
+  "name": "tsfv",
+  "version": "1.0.0",
+  "description": "Typescript Fluent Validation Library",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc --declaration --project src",
+    "lint": "eslint 'src/**/*.ts'",
+    "prepare": "npm run build",
+    "prepublishOnly": "npm run lint && npm run test",
+    "prettier": "prettier --write 'src/**/*.ts' 'test/**/*.test.ts'",
+    "test": "mocha -r ts-node/register --exit 'test/**/*.test.ts'"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/trevorr/tsfv.git"
+  },
+  "keywords": [
+    "typescript",
+    "validation"
+  ],
+  "author": "Trevor Robinson",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/trevorr/tsfv/issues"
+  },
+  "homepage": "https://github.com/trevorr/tsfv#readme",
+  "devDependencies": {
+    "@types/chai": "^4.2.7",
+    "@types/mocha": "^5.2.7",
+    "@types/node": "^12.12.21",
+    "@typescript-eslint/eslint-plugin": "^2.12.0",
+    "@typescript-eslint/parser": "^2.12.0",
+    "chai": "^4.2.0",
+    "eslint": "^6.8.0",
+    "mocha": "^6.2.2",
+    "prettier": "^1.19.1",
+    "ts-node": "^8.5.4",
+    "typescript": "^3.7.4"
+  },
+  "prettier": {
+    "singleQuote": true,
+    "semi": true,
+    "printWidth": 120
+  }
+}
