@@ -2,11 +2,25 @@
   "name": "tsfv",
   "version": "1.0.0",
   "description": "Typescript Fluent Validation Library",
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
+  "keywords": [
+    "typescript",
+    "validation"
+  ],
+  "homepage": "https://github.com/trevorr/tsfv#readme",
+  "bugs": {
+    "url": "https://github.com/trevorr/tsfv/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/trevorr/tsfv.git"
+  },
+  "license": "ISC",
+  "author": "Trevor Robinson",
   "files": [
     "dist"
   ],
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "scripts": {
     "build": "tsc --declaration --project src",
     "lint": "eslint 'src/**/*.ts'",
@@ -15,20 +29,17 @@
     "prettier": "prettier --write 'src/**/*.ts' 'test/**/*.test.ts'",
     "test": "nyc --check-coverage --extension .ts -r text -r html mocha --forbid-only 'test/**/*.test.ts'"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/trevorr/tsfv.git"
+  "prettier": {
+    "printWidth": 120,
+    "semi": true,
+    "singleQuote": true
   },
-  "keywords": [
-    "typescript",
-    "validation"
-  ],
-  "author": "Trevor Robinson",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/trevorr/tsfv/issues"
+  "nyc": {
+    "branches": 100,
+    "functions": 100,
+    "lines": 100,
+    "statements": 100
   },
-  "homepage": "https://github.com/trevorr/tsfv#readme",
   "devDependencies": {
     "@types/chai": "^4.2.7",
     "@types/mocha": "^5.2.7",
@@ -42,16 +53,5 @@
     "prettier": "^1.19.1",
     "ts-node": "^8.5.4",
     "typescript": "^3.7.4"
-  },
-  "nyc": {
-    "branches": 100,
-    "lines": 100,
-    "functions": 100,
-    "statements": 100
-  },
-  "prettier": {
-    "singleQuote": true,
-    "semi": true,
-    "printWidth": 120
   }
 }
