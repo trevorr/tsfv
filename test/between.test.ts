@@ -27,4 +27,7 @@ describe('between', () => {
     expect(tsfv.between(0, 1).test([])).to.be.false;
     expect(tsfv.between(0, 1).test({})).to.be.false;
   });
+  it('throws on invalid range', () => {
+    expect(() => tsfv.between(1, 0).test(1)).to.throw('Invalid range constraint');
+  });
 });

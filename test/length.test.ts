@@ -23,4 +23,7 @@ describe('length', () => {
     expect(tsfv.length(0, 1).test(1)).to.be.false;
     expect(tsfv.length(0, 1).test({})).to.be.false;
   });
+  it('throws on invalid range', () => {
+    expect(() => tsfv.length(1, 0).test(1)).to.throw('Invalid length constraint');
+  });
 });

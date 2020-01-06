@@ -7,8 +7,8 @@ interface ValidatorConstructor {
 export class Validator {
   constructor(
     public readonly rules: RuleInstance[],
-    protected readonly allowNull = false,
-    protected readonly allowUndefined = false
+    protected readonly allowNull: boolean,
+    protected readonly allowUndefined: boolean
   ) {}
   protected withRule(rule: RuleInstance): this {
     return new (this.constructor as ValidatorConstructor)(

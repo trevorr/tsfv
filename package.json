@@ -13,7 +13,7 @@
     "prepare": "npm run build",
     "prepublishOnly": "npm run lint && npm run test",
     "prettier": "prettier --write 'src/**/*.ts' 'test/**/*.test.ts'",
-    "test": "mocha -r ts-node/register --exit 'test/**/*.test.ts'"
+    "test": "nyc --check-coverage --extension .ts -r text -r html mocha --forbid-only 'test/**/*.test.ts'"
   },
   "repository": {
     "type": "git",
@@ -38,9 +38,16 @@
     "chai": "^4.2.0",
     "eslint": "^6.8.0",
     "mocha": "^6.2.2",
+    "nyc": "^15.0.0",
     "prettier": "^1.19.1",
     "ts-node": "^8.5.4",
     "typescript": "^3.7.4"
+  },
+  "nyc": {
+    "branches": 100,
+    "lines": 100,
+    "functions": 100,
+    "statements": 100
   },
   "prettier": {
     "singleQuote": true,
