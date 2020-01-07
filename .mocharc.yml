@@ -1,0 +1,7 @@
+forbid-only: true
+recursive: true
+reporter: mocha-multi-reporters
+reporter-options: configFile=.mocha-multi-config.json
+require: ts-node/register
+timeout: 5000
+watch-extensions: ts

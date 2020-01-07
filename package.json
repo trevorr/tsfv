@@ -22,12 +22,13 @@
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
-    "build": "tsc --declaration --project src",
+    "build": "rm -rf dist && tsc --project src",
     "lint": "eslint 'src/**/*.ts'",
+    "lint:ci": "eslint 'src/**/*.ts' --format junit --output-file test-results/eslint/eslint.xml",
     "prepare": "npm run build",
-    "prepublishOnly": "npm run lint && npm run test",
-    "prettier": "prettier --write 'src/**/*.ts' 'test/**/*.test.ts'",
-    "test": "nyc --check-coverage --extension .ts -r text -r html mocha --forbid-only 'test/**/*.test.ts'"
+    "prepublishOnly": "npm run test && npm run lint",
+    "prettier": "prettier --write 'src/**/*.ts' 'test/**/*.ts'",
+    "test": "nyc mocha 'test/**/*.test.ts'"
   },
   "prettier": {
     "printWidth": 120,
@@ -41,17 +42,23 @@
     "statements": 100
   },
   "devDependencies": {
+    "@istanbuljs/nyc-config-typescript": "^1.0.1",
     "@types/chai": "^4.2.7",
     "@types/mocha": "^5.2.7",
-    "@types/node": "^12.12.21",
-    "@typescript-eslint/eslint-plugin": "^2.12.0",
-    "@typescript-eslint/parser": "^2.12.0",
+    "@types/node": "^12.12.24",
+    "@typescript-eslint/eslint-plugin": "^2.14.0",
+    "@typescript-eslint/parser": "^2.14.0",
     "chai": "^4.2.0",
     "eslint": "^6.8.0",
     "mocha": "^6.2.2",
+    "mocha-junit-reporter": "^1.23.1",
+    "mocha-multi-reporters": "^1.1.7",
     "nyc": "^15.0.0",
     "prettier": "^1.19.1",
     "ts-node": "^8.5.4",
     "typescript": "^3.7.4"
+  },
+  "engines": {
+    "node": ">=12.0.0"
   }
 }
