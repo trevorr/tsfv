@@ -1,5 +1,8 @@
 # tsfv: Typescript Fluent Validation Library
 
+[![npm](https://img.shields.io/npm/v/tsfv)](https://www.npmjs.com/package/tsfv)
+[![CircleCI](https://img.shields.io/circleci/build/github/trevorr/tsfv)](https://circleci.com/gh/trevorr/tsfv)
+
 A Typescript-based validation library with an extensible, fluent API and human-readable error messages.
 
 Similar to and somewhat inspired by [v8n](https://imbrn.github.io/v8n/), but addresses some limitations of that library:
