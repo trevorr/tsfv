@@ -43,6 +43,15 @@ objv.check({ id: 42, foo: 'bar' });
 objv.testAll({ x: Math.PI }).forEach(err => console.log(err.message));
 // Expected object with keys array with every element length between 2 and 8 and array with some element value exactly equal to "id"
 // Expected object with values array with every element (integer or string)
+
+const aoav = tsfv.every(
+  tsfv.properties({
+    ids: tsfv.every(tsfv.string().length(1, 10)).minLength(1)
+  })
+);
+aoav.check([{ ids: ['2'] }, { ids: ['1', '99'], extra: 'stuff' }]);
+aoav.testAll([{ ids: [] }, { ids: [''] }]).forEach(err => console.log(err.message));
+// Expected array with every element object with properties ids (array with every element string and length between 1 and 10 and minimum length of 1)
 ```
 
 ### Custom Predicates
@@ -731,6 +740,20 @@ Example:
 
 ```ts
 tsfv.values(tsfv.every(tsfv.numeric())).test({ a: 1, b: '2' }); // true
+```
+
+#### properties
+
+`properties<T>(propertyValidator: { [P in keyof T]: Validator }, only = false): ObjectValidation`
+
+Returns a new validator that checks that the validated value is an object with properties that pass the given validator.
+If `only` is true, additional, unvalidated properties will fail validation; otherwise, they are ignored.
+
+Example:
+
+```ts
+tsfv.properties({ a: tsfv.number(), b: tsfv.string() }).test({ a: 1, b: '2' }); // true
+tsfv.properties({ a: tsfv.number() }, true).test({ a: 1, b: '2' }); // false
 ```
 
 ### Optional Value Builders

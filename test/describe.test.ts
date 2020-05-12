@@ -39,6 +39,14 @@ describe('describe', () => {
     expect(tsfv.instanceOf(Date).describe()).to.equal('instance of Date');
     expect(tsfv.keys(tsfv).describe()).to.equal('object with keys any');
     expect(tsfv.values(tsfv).describe()).to.equal('object with values any');
+    expect(tsfv.properties({}).describe()).to.equal('object with any properties');
+    expect(tsfv.properties({}, true).describe()).to.equal('object with no properties');
+    expect(tsfv.properties({ a: tsfv, b: tsfv.length(1) }).describe()).to.equal(
+      'object with properties a (any), b (length of 1)'
+    );
+    expect(tsfv.properties({ a: tsfv, b: tsfv.length(1) }, true).describe()).to.equal(
+      'object with only properties a (any), b (length of 1)'
+    );
   });
   it('describes not rules', () => {
     expect(tsfv.not.array().describe()).to.equal('not array');

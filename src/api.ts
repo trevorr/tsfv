@@ -301,6 +301,14 @@ export interface ObjectValidationReturning<V> extends InvertibleValidation {
    * @param arrayValidator an array validator (e.g. `some` or `every`) to apply to the object values
    */
   values(arrayValidator: Validator): V;
+
+  /**
+   * Returns a new validator that checks that the validated value is an object with properties that pass the given validator.
+   *
+   * @param propertyValidator an object mapping property names to their respective validators
+   * @param only whether an object with additional, unvalidated properties is valid
+   */
+  properties<T>(propertyValidator: { [P in keyof T]: Validator }, only?: boolean): V;
 }
 
 /**

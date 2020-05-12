@@ -235,7 +235,7 @@ export class Validation extends Validator {
       id: 'keys',
       rules: arrayValidator.rules,
       describe: () => `object with keys ${arrayValidator.describe()}`,
-      test: (v: object) => isObject(v) && arrayValidator.test(Object.keys(v))
+      test: (v: any) => isObject(v) && arrayValidator.test(Object.keys(v))
     });
   }
   values(arrayValidator: Validator): this {
@@ -243,7 +243,27 @@ export class Validation extends Validator {
       id: 'values',
       rules: arrayValidator.rules,
       describe: () => `object with values ${arrayValidator.describe()}`,
-      test: (v: object) => isObject(v) && arrayValidator.test(Object.values(v))
+      test: (v: any) => isObject(v) && arrayValidator.test(Object.values(v))
+    });
+  }
+  properties<T>(propertyValidator: { [P in keyof T]: Validator }, only = false): this {
+    return this.withRule({
+      id: 'properties',
+      properties: propertyValidator,
+      only,
+      describe: () => {
+        const entries = Object.entries<Validator>(propertyValidator);
+        if (!entries.length) {
+          return `object with ${only ? 'no' : 'any'} properties`;
+        }
+        return `object with ${only ? 'only ' : ''}properties ${entries
+          .map(([k, v]) => `${k} (${v.describe()})`)
+          .join(', ')}`;
+      },
+      test: (o: any) =>
+        isObject(o) &&
+        Object.entries<Validator>(propertyValidator).every(([k, v]) => v.test((o as any)[k])) &&
+        (!only || Object.keys(o).every(k => k in propertyValidator))
     });
   }
 }
