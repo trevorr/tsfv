@@ -43,20 +43,20 @@
   },
   "devDependencies": {
     "@istanbuljs/nyc-config-typescript": "^1.0.1",
-    "@types/chai": "^4.2.7",
-    "@types/mocha": "^5.2.7",
+    "@types/chai": "^4.2.11",
+    "@types/mocha": "^7.0.2",
     "@types/node": "^12.12.24",
-    "@typescript-eslint/eslint-plugin": "^2.14.0",
-    "@typescript-eslint/parser": "^2.14.0",
+    "@typescript-eslint/eslint-plugin": "^2.33.0",
+    "@typescript-eslint/parser": "^2.33.0",
     "chai": "^4.2.0",
-    "eslint": "^6.8.0",
-    "mocha": "^6.2.2",
-    "mocha-junit-reporter": "^1.23.1",
+    "eslint": "^7.0.0",
+    "mocha": "^7.1.2",
+    "mocha-junit-reporter": "^1.23.3",
     "mocha-multi-reporters": "^1.1.7",
-    "nyc": "^15.0.0",
-    "prettier": "^1.19.1",
-    "ts-node": "^8.5.4",
-    "typescript": "^3.7.4"
+    "nyc": "^15.0.1",
+    "prettier": "^2.0.5",
+    "ts-node": "^8.10.1",
+    "typescript": "^3.8.3"
   },
   "engines": {
     "node": ">=12.0.0"
