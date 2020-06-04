@@ -1,0 +1,8 @@
+{
+  "extends": "../tsconfig.json",
+  "compilerOptions": {
+    "module": "System",
+    "outFile": "../dist/tsfv.js",
+    "target": "ES5"
+  }
+}
